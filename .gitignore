@@ -1,6 +1,7 @@
 my_id.json
 __pycache__/
 .ipynb_checkpoints/
+service-uri.json
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
