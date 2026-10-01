@@ -36,6 +36,8 @@ El modelo utiliza:
 
 - `TfidfVectorizer`
 - `LogisticRegression`
+- `prajjwal1/bert-tiny`
+
 
 Al finalizar el entrenamiento se generan los archivos:
 
@@ -51,7 +53,10 @@ Desde la carpeta del proyecto ejecutar:
 ```bash
 uvicorn mian:app --reload
 ```
-
+Si se quiere utilizar la instancia de bert_tiny , levantar la api con 
+```bash
+uvicorn main:app --reload
+```
 La API estará disponible localmente en:
 
 ```text
@@ -128,4 +133,18 @@ positive / neutral / negative
 API
   ↓
 Respuesta JSON
+```
+con mini-bert es :
+```text
+texto
+ ↓
+BERT tokenizer
+ ↓
+BERT Tiny
+ ↓
+logits
+ ↓
+softmax
+ ↓
+positive / neutral / negative
 ```
