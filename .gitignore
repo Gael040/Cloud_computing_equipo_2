@@ -2,6 +2,9 @@ my_id.json
 __pycache__/
 .ipynb_checkpoints/
 service-uri.json
+my_passwd.json
+my_id.json
+__pycache__/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
