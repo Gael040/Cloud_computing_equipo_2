@@ -1,9 +1,8 @@
-import requests
 import json
+from pathlib import Path
 import pandas as pd
+import requests
 
-
-import json
 
 id = open('service-uri.json', 'r')
 mi = json.load(id)
@@ -12,17 +11,23 @@ scoring_uri = mi["scoring_uri"]
 
 
 prueba = pd.DataFrame([
-
     {
-        "SalesOrderID": 71774,
-        "SalesOrderDetailID": 110562,
-        "OrderQty": 1,
-        "ProductID": 836,
-        "UnitPrice": 356.898,
-        "UnitPriceDiscount": 0
+        "CustomerID": 100,
+        "NameStyle": 0,
+        "Title": 0,
+        "FirstName": 0,
+        "MiddleName": 0,
+        "LastName": 0,
+        "Suffix": 0,
+        "CompanyName": 0,
+        "SalesPerson": 0,
+        "EmailAddress": 0,
+        "Phone": 0,
+        "PasswordHash": 0,
+        "PasswordSalt": 0,
+        "rowguid": 0,
     }
 ])
-
 
 headers = {
     "Content-Type": "application/json"
@@ -39,11 +44,13 @@ response = requests.post(
 if response.status_code == 200:
 
     result = json.loads(response.json())
-    print("result: ", result)
-    prueba["LineTotal_Predicted"] = result["result"]
 
-    print(prueba)
+    if "error" in result:
+        print("Error del modelo:")
+        print(result["error"])
 
-else:
+    else:
+        fecha = pd.to_datetime(result["result"])
 
-    print(f"Error: {response.text}")
+        print("Predicción:")
+        print(fecha)

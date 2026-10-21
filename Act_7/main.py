@@ -10,7 +10,7 @@ def main():
     datos = get_data()
 
     # 2. Entrenar modelo
-    print("Entrenando modelo...")
+    print("Entrenando modelo para ModifiedDate...")
     train_model(datos)
 
     # 3. Deploy

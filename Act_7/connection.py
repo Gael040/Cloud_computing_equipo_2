@@ -1,6 +1,7 @@
 import pyodbc
 import json
 import pandas as pd
+from pathlib import Path
 
 
 def get_data():
@@ -24,10 +25,12 @@ def get_data():
 
     conn = pyodbc.connect(conn_str)
 
-    query = "SELECT * FROM SalesLT.SalesOrderDetail"
+    query = "SELECT * FROM SalesLT.Customer"
 
-    datos = pd.read_sql(query, conn)
-
-    conn.close()
+    try:
+        datos = pd.read_sql(query, conn)
+    finally:
+        conn.close()
 
     return datos
+
