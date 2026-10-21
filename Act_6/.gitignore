@@ -1,0 +1,7 @@
+.venv/
+.python/
+.uv-cache/
+__pycache__/
+.ipynb_checkpoints/
+artifacts_fedadam/
+*.keras
